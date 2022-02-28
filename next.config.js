@@ -14,6 +14,9 @@ const stringified = querystring.stringify(queryString)
 
 module.exports = {
   reactStrictMode: true,
+  images: {
+    domains: ['i.scdn.co']
+  },
   async redirects () {
     return [
       {
