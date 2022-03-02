@@ -8,7 +8,7 @@ import cookie from 'cookie'
 export default function handler(req, res) {
   // Use Later
   let stateKey = 'spotify_auth_state'
-
+  
   // Retrieve the returning params of the API call
   let code = req.query.code || null
   let state = req.query.state || null
