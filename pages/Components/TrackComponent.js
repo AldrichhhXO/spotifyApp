@@ -8,14 +8,11 @@ export default function TrackComponent({ trackData, imageSource, imageWidth, ima
     const [songName, setSongName] = useState(trackData.name)
     const [previewUrl, setPreviewUrl] = useState(trackData.preview_url)
     
-    
- 
     const showcaseTrack = (e) => {
         let musicPlayer = document.getElementById(`player-${trackIndex}`)
         musicPlayer.volume = "0.2"
         musicPlayer.load()
          musicPlayer.play()
-
     }
 
     const stopShowcase = () => {
