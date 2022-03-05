@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import Layout from '../Components/Layout'
 
-// 3/3: Rest Day
+// 3/4: Rest Day
 import TracksContainer from '../Components/TracksContainer'
 import ArtistsContainer from '../Components/ArtistsContainer'
 
