@@ -1,9 +1,11 @@
 import Link from 'next/link'
 import {useState, useEffect } from 'react'
-import Layout from './Components/Layout'
-import ShowcaseLayout from './Layout/ShowcaseLayout'
+import Layout from '../Components/Layout/Layout'
+import ShowcaseLayout from '../Components/Layout/ShowcaseLayout'
 import {useRouter} from 'next/router'
 import Axios from 'axios'
+
+
 
 export default function Home() {
   let router = useRouter()
@@ -80,8 +82,21 @@ export default function Home() {
     } else {
       return (
         <Layout>
-          <h2 className="text-red-700 text-2xl">Spotify Web Application</h2>
-          <Link href = "/api/login" passHref><button>Log In</button></Link>
+          <h2 className=" text-2xl">Spotify Web App</h2>
+          <section className='flex-center-row'>
+            <div className = "max-w-sm min-h-[300px] rounded overflow-hidden shadow-lg mx-3">
+              <div className='text-lg px-10 py-20 '>Using Spotify's public API, be able to view the top tracks and artists that you've been listening to at various time periods, while also finding new music based on your current interests.</div>
+            </div>
+            <div className='max-w-sm rounded overflow-hidden shadow-lg mx-3 min-h-[300px]'>
+              <div className='text-lg px-10 py-20'>Explore your library of music by viewing recommended artists and tracks, based on the chosen track / artist</div>
+            </div>
+            <div className='max-w-sm rounded overflow-hidden shadow-lg mx-3 min-h-[300px]'>
+              <div className='text-lg px-10 py-20'>
+              Using Spotify's public API, be able to view the top tracks and artists that you've been listening to at various time periods, while also finding new music based on your current interests.
+              </div>
+            </div>
+          </section>
+          <Link href = "/api/login" passHref><button className='rounded-md bg-emerald-700 px-10 py-2 text-xl mx-auto text-white hover:border-2 hover:border-emerald-700 hover:bg-white hover:text-black transition-all duration-100 mt-2'>Log In</button></Link>
       </Layout>
       )
     }

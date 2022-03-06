@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
-import Layout from '../Components/Layout'
+import Layout from '../../Components/Layout/Layout'
 
 // 3/4: Rest Day
-import TracksContainer from '../Components/TracksContainer'
-import ArtistsContainer from '../Components/ArtistsContainer'
+import TracksContainer from '../../Components/Tracks/TracksContainer'
+import ArtistsContainer from '../../Components/Artists/ArtistsContainer'
 
 
 /**
@@ -16,7 +16,7 @@ export default function ShowcaseLayout({ tracksData, tracksTimeFrameHandler }) {
 
 
   return (
-    <Layout>
+    <div className='w-[50%]'>
         <nav className = "w-full h-12 border-2 border-black mt-12 flex justify-center">
             <a onClick = {() => setDataDisplay('Top_Artists')}>Your Top Artists</a>
             <a onClick = {() => setDataDisplay('Top_Tracks')}>Your Top Tracks</a>
@@ -37,6 +37,6 @@ export default function ShowcaseLayout({ tracksData, tracksTimeFrameHandler }) {
         )}
     
 
-    </Layout>
+    </div>
   )
 }

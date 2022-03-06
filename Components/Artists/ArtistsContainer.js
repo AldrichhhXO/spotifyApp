@@ -21,19 +21,19 @@ export default function ArtistsContainer() {
 
   if (artists) {
     let ArtistComponents = artists.map((artist, index) => {
-      console.log(artist)
+
       return (<ArtistComponent index = {index} artistImageSrc={artist.images[1].url} width = {artist.images[1].width} height = {artist.images[1].height} artistName = {artist.name} artistId = {artist.id} />)
     })
 
 
     return (
-      <div className='w-[80%] border-2 border-black flex justify-center items-center flex-col'>
+      <div className='w-[60%]  flex justify-center items-center flex-col'>
         <nav className='w-[40%] flex justify-around m-auto border-2 border-black'>
           <a className='text-xl py-4 cursor-pointer' onClick = {() => setArtistTimeFrame('short_term')}>Current</a>
           <a className='text-xl py-4 cursor-pointer' onClick = {() => setArtistTimeFrame('medium_term')}>Last 6 Months</a>
           <a className='text-xl py-4 cursor-pointer' onClick = {() => setArtistTimeFrame('long_term')}>All Time</a>
         </nav>
-        <div className='w-[80%] max-w-fit grid lg:w-[70%] xl:w-[50%] xl:max-w-6xl grid-cols-5  sm:grid-cols-5'>
+        <div className='w-[50%] max-w-fit grid lg:w-[70%] xl:w-[50%] xl:max-w-6xl grid-cols-5  sm:grid-cols-5'>
           { ArtistComponents }
         </div>
       </div>

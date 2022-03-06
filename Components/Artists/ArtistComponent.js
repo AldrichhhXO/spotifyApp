@@ -26,27 +26,28 @@ export default function ArtistComponent({ index,  artistImageSrc, width, height,
   }, [artistId])
 
 
-   
-  const showcaseTrack = (e) => {
-    let musicPlayer = document.getElementById(`player-${artistId}`)
-    musicPlayer.volume = "0.2"
-    musicPlayer.load()
-    musicPlayer.play()
+  
+  // const showcaseTrack = (e) => {
+  //   let musicPlayer = document.getElementById(`player-${artistId}`)
+  //   musicPlayer.volume = "0.2"
+  //   musicPlayer.load()
+    
+  //   musicPlayer.play()
+  // }
 
-}
-
-const stopShowcase = () => {
-    let musicPlayer = document.getElementById(`player-${artistId}`)
-   musicPlayer.pause()
-}
+  // const stopShowcase = () => {
+  //     let musicPlayer = document.getElementById(`player-${artistId}`)
+  //   musicPlayer.pause()
+  // }
 
 
   return (
-    <div className = "my-[-3px] hover:opacity-60" onMouseEnter={showcaseTrack} onMouseLeave = {stopShowcase}>
+    <div className = "my-[-3px] hover:opacity-60 w-[400px]">
       <Image key = {index} src = {artistImageSrc} width = {width} height = {height} alt = {artistName}/>
-      <audio preload id = {`player-${artistId}`}>
+      
+      {/* <audio preload id = {`player-${artistId}`}>
         <source src = { previewUrl } type = "audio/mpeg"/>
-      </audio>
+      </audio> */}
   </div>
   )
 }
