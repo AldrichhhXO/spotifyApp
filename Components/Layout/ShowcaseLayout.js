@@ -1,42 +1,48 @@
 import React, {useState} from 'react'
-import Layout from '../../Components/Layout/Layout'
-
-// 3/4: Rest Day
 import TracksContainer from '../../Components/Tracks/TracksContainer'
 import ArtistsContainer from '../../Components/Artists/ArtistsContainer'
-
+import SpotifyShowcase from '../SpotifyShowcase'
 
 /**
- * @param {} param0 
- * @returns 
+ * 
  */
-export default function ShowcaseLayout({ tracksData, tracksTimeFrameHandler }) {
+export default function ShowcaseLayout({ tracksData, artistsData,  tracksTimeFrameHandler }) {
     // Used to determine the type of content being displayed
     const [dataDisplay, setDataDisplay] = useState('Top_Artists')
+    const [ showcasedItem, setShowcasedItem ] = useState()
+    // const [ showcaseType, setShowcaseType ] = useState()
 
+  
+    const showcaseItem = (item, type) => {
+      setShowcasedItem(item)
+      // setShowcaseType(type)
+    }
+
+    const clearShowCase = (val) => {
+      setShowcasedItem(val)
+    }
 
   return (
-    <div className='w-[50%]'>
-        <nav className = "w-full h-12 border-2 border-black mt-12 flex justify-center">
-            <a onClick = {() => setDataDisplay('Top_Artists')}>Your Top Artists</a>
-            <a onClick = {() => setDataDisplay('Top_Tracks')}>Your Top Tracks</a>
+    <>
+        <nav className = "w-full h-fit border-2 border-black mt-12 flex justify-center">
+            <a className= 'mx-4 text-xl my-3' onClick = {() => setDataDisplay('Top_Artists')}>Your Top Artists</a>
+            <a className= 'mx-4 text-xl my-3' onClick = {() => setDataDisplay('Top_Tracks')}>Your Top Tracks</a>
         </nav>
 
         {dataDisplay == 'Top_Artists' && (
           <>
-            <strong><h1 className='my-10'>Your Top Artists</h1></strong>
-            <ArtistsContainer />
+            <strong><h1 className='my-10 text-3xl'>Your Top Artists</h1></strong>
+            <ArtistsContainer showcaseHandler = { showcaseItem } showcaseClearHandler = {clearShowCase} />
           </>
         )}
 
         {dataDisplay == 'Top_Tracks' && (
           <>
               <strong><h1 className='my-10'>Your Top Tracks</h1></strong>
-              <TracksContainer trackData={ tracksData } />
+              <TracksContainer trackData={ tracksData } showcaseHandler = { showcaseItem } />
           </>
         )}
-    
-
-    </div>
+        {showcasedItem && <SpotifyShowcase showcaseId = { showcasedItem }/>}
+    </>
   )
 }

@@ -77,12 +77,15 @@ export default function Home() {
   else {
     if (spotifyProfile) {
       return (
-        <ShowcaseLayout tracksData = {spotifyTopTracks} tracksTimeFrameHandler = {updateTracksTimeFrame}  />
+        <ShowcaseLayout 
+        tracksData = {spotifyTopTracks} 
+        tracksTimeFrameHandler = {updateTracksTimeFrame}  
+        artistsData = { spotifyTopArtists } />
       )
     } else {
       return (
-        <Layout>
-          <h2 className=" text-2xl">Spotify Web App</h2>
+        <>
+          <h2 className=" text-6xl my-5">Spotify Web App</h2>
           <section className='flex-center-row'>
             <div className = "max-w-sm min-h-[300px] rounded overflow-hidden shadow-lg mx-3">
               <div className='text-lg px-10 py-20 '>Using Spotify's public API, be able to view the top tracks and artists that you've been listening to at various time periods, while also finding new music based on your current interests.</div>
@@ -92,12 +95,15 @@ export default function Home() {
             </div>
             <div className='max-w-sm rounded overflow-hidden shadow-lg mx-3 min-h-[300px]'>
               <div className='text-lg px-10 py-20'>
-              Using Spotify's public API, be able to view the top tracks and artists that you've been listening to at various time periods, while also finding new music based on your current interests.
+                Using Spotify's public API, be able to view the top tracks and artists that you've been listening to at various time periods, while also finding new music based on your current interests.
               </div>
             </div>
           </section>
-          <Link href = "/api/login" passHref><button className='rounded-md bg-emerald-700 px-10 py-2 text-xl mx-auto text-white hover:border-2 hover:border-emerald-700 hover:bg-white hover:text-black transition-all duration-100 mt-2'>Log In</button></Link>
-      </Layout>
+          <div className='my-10'>
+          <Link href = "/api/login" passHref><button className='rounded-md my-16 bg-emerald-700 px-10 py-2 text-xl mx-auto text-white hover:border-2 hover:border-emerald-700 hover:bg-white hover:text-black transition-all duration-100 mt-2'>Log In</button></Link>
+          </div>
+          
+      </>
       )
     }
 

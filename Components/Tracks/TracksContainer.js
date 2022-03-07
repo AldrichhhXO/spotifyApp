@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import TrackComponent from './TrackComponent'
 
 export default function TracksContainer({ trackData }) {
+  const [tracks, setTracks ] = useState()
+
+
     let TrackComponents = trackData.map((track, index) => {
       return <TrackComponent 
                 key = { index } 

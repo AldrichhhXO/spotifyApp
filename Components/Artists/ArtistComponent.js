@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 import Axios from 'axios'
 
-export default function ArtistComponent({ index,  artistImageSrc, width, height, artistName, artistId}) {
+export default function ArtistComponent({ index,  artistImageSrc, width, height, artistName, artistId, showcaseHandler, showcaseClearHandler }) {
 
   const [ previewUrl, setPreviewUrl] = useState()
 
@@ -42,7 +42,7 @@ export default function ArtistComponent({ index,  artistImageSrc, width, height,
 
 
   return (
-    <div className = "my-[-3px] hover:opacity-60 w-[400px]">
+    <div className = "my-[-3px] hover:opacity-60" onMouseEnter={() => showcaseHandler(artistId)} onMouseLeave = {() => showcaseClearHandler()}>
       <Image key = {index} src = {artistImageSrc} width = {width} height = {height} alt = {artistName}/>
       
       {/* <audio preload id = {`player-${artistId}`}>
