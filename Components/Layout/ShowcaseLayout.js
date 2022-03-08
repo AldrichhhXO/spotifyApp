@@ -10,12 +10,12 @@ export default function ShowcaseLayout({ tracksData, artistsData,  tracksTimeFra
     // Used to determine the type of content being displayed
     const [dataDisplay, setDataDisplay] = useState('Top_Artists')
     const [ showcasedItem, setShowcasedItem ] = useState()
-    // const [ showcaseType, setShowcaseType ] = useState()
+     const [ showcaseType, setShowcaseType ] = useState()
 
   
     const showcaseItem = (item, type) => {
       setShowcasedItem(item)
-      // setShowcaseType(type)
+      setShowcaseType(type)
     }
 
     const clearShowCase = (val) => {
@@ -42,7 +42,7 @@ export default function ShowcaseLayout({ tracksData, artistsData,  tracksTimeFra
               <TracksContainer trackData={ tracksData } showcaseHandler = { showcaseItem } />
           </>
         )}
-        {showcasedItem && <SpotifyShowcase showcaseId = { showcasedItem }/>}
+        {(showcasedItem  && showcaseType)&& <SpotifyShowcase showcaseId = { showcasedItem } type = { showcaseType }/>}
     </>
   )
 }

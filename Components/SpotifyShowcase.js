@@ -12,7 +12,7 @@ import Axios from 'axios'
 
 
 export default function SpotifyShowcase(props) {
-  console.log(props.showcaseId)
+  console.log(showcaseData)
     /*
         Be able to determine between if it is a track or an artist
     */
@@ -25,11 +25,18 @@ export default function SpotifyShowcase(props) {
 }
 
 
- export async function getStaticProps(showcaseId) {
+ export async function getStaticProps(showcaseId, type) {
+
+  if (type == 'Artist') {
+    let showcaseResponse = await Axios.get(`https://api.spotify.com/v1/artists/${showcaseId}/top-tracks?market=US`)
+    let showcaseData = showcaseResponse.data.tracks
+    return {props: showcaseData}
+  }
+  else if (type == 'Track') {}
+  
 
   // This will be for the artist
-  let showcaseResponse = await Axios.get(`https://api.spotify.com/v1/artists/${showcaseId}/top-tracks?market=US`)
-  let showcaseData = showcaseResponse.data.tracks
+  
 
   return {props: showcaseId}
  }

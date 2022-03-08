@@ -42,7 +42,7 @@ export default function ArtistComponent({ index,  artistImageSrc, width, height,
 
 
   return (
-    <div className = "my-[-3px] hover:opacity-60" onMouseEnter={() => showcaseHandler(artistId)} onMouseLeave = {() => showcaseClearHandler()}>
+    <div className = "my-[-3px] hover:opacity-60" onMouseEnter={() => showcaseHandler(artistId, 'Artist')} onMouseLeave = {() => showcaseClearHandler()}>
       <Image key = {index} src = {artistImageSrc} width = {width} height = {height} alt = {artistName}/>
       
       {/* <audio preload id = {`player-${artistId}`}>

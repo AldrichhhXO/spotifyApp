@@ -2,8 +2,7 @@ let querystring = require('query-string')
 let request = require('request')
 
 import axios from 'axios'
-import { getCookie } from 'cookies-next'
-import cookie from 'cookie'
+
 
 export default function handler(req, res) {
   // Use Later
