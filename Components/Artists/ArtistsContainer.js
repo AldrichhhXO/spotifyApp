@@ -22,7 +22,15 @@ export default function ArtistsContainer({ showcaseHandler, showcaseClearHandler
   if (artists) {
     let ArtistComponents = artists.map((artist, index) => {
 
-      return (<ArtistComponent index = {index} artistImageSrc={artist.images[1].url} width = {artist.images[1].width} height = {artist.images[1].height} artistName = {artist.name} artistId = {artist.id} showcaseHandler = {showcaseHandler } showcaseClearHandler = {showcaseClearHandler}/>)
+      return (<ArtistComponent 
+                index = {index} 
+                artistImageSrc= { artist.images[1].url }
+                width = {artist.images[1].width} 
+                height = {artist.images[1].height} 
+                artistName = {artist.name} 
+                artistId = {artist.id} 
+                showcaseHandler = {showcaseHandler } 
+                showcaseClearHandler = {showcaseClearHandler}/>)
     })
 
 

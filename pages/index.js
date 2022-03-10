@@ -5,8 +5,6 @@ import ShowcaseLayout from '../Components/Layout/ShowcaseLayout'
 import {useRouter} from 'next/router'
 import Axios from 'axios'
 
-
-
 export default function Home() {
   let router = useRouter()
 

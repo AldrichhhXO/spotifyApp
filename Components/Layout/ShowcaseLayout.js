@@ -6,7 +6,7 @@ import SpotifyShowcase from '../SpotifyShowcase'
 /**
  * 
  */
-export default function ShowcaseLayout({ tracksData, artistsData,  tracksTimeFrameHandler }) {
+export default function ShowcaseLayout({ tracksData, tracksTimeFrameHandler }) {
     // Used to determine the type of content being displayed
     const [dataDisplay, setDataDisplay] = useState('Top_Artists')
     const [ showcasedItem, setShowcasedItem ] = useState()
@@ -42,7 +42,7 @@ export default function ShowcaseLayout({ tracksData, artistsData,  tracksTimeFra
               <TracksContainer trackData={ tracksData } showcaseHandler = { showcaseItem } />
           </>
         )}
-        {(showcasedItem  && showcaseType)&& <SpotifyShowcase showcaseId = { showcasedItem } type = { showcaseType }/>}
+        {(showcasedItem  && showcaseType) && <SpotifyShowcase showcaseId = { showcasedItem } type = { showcaseType }/>}
     </>
   )
 }
