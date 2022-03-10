@@ -7,20 +7,20 @@ export default function TrackComponent({ trackData, imageSource, imageWidth, ima
     const [songName, setSongName] = useState(trackData.name)
     const [previewUrl, setPreviewUrl] = useState(trackData.preview_url)
     
-    // const showcaseTrack = (e) => {
-    //     let musicPlayer = document.getElementById(`player-${trackIndex}`)
-    //     musicPlayer.volume = "0.2"
-    //     musicPlayer.load()
-    //     musicPlayer.play()
-    // }
+    const showcaseTrack = (e) => {
+        // let musicPlayer = document.getElementById(`player-${trackIndex}`)
+        // musicPlayer.volume = "0.2"
+        // musicPlayer.load()
+        // musicPlayer.play()
+    }
 
-    // const stopShowcase = () => {
-    //     let musicPlayer = document.getElementById(`player-${trackIndex}`)
-    //    musicPlayer.pause()
-    // }
+    const stopShowcase = () => {
+      //   let musicPlayer = document.getElementById(`player-${trackIndex}`)
+      //  musicPlayer.pause()
+    }
 
   return (
-    <div className='my-[-3px] hover:opacity-60' onMouseEnter={showcaseTrack} onMouseLeave = {stopShowcase}>
+    <div className='my-[-3px] hover:opacity-60' onMouseEnter={showcaseTrack} onMouseLeave = {stopShowcase} >
         <Image src = {imageSource} width = {imageWidth} height = {imageHeight} />
         {/* <audio preload id = {`player-${trackIndex}`} >
            <source src = { previewUrl } type = "audio/mpeg"/> 

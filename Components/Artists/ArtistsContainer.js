@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { fetchArtists } from '../../lib/Artists/Artists'
 
 import Axios from 'axios'
 import ArtistComponent from './ArtistComponent'
@@ -6,16 +7,13 @@ import ArtistComponent from './ArtistComponent'
 export default function ArtistsContainer({ showcaseHandler, showcaseClearHandler }) {
   const [artists, setArtists] = useState()
   const [artistTimeFrame, setArtistTimeFrame] = useState('medium_term')
+
+  // Change this to React.Context
   let token = localStorage.getItem('access_token')
   let header = { 'Authorization': 'Bearer ' + token }
 
   useEffect(() => {
-    const fetchArtists = async () => {
-      let response = await Axios.get(`https://api.spotify.com/v1/me/top/artists?limit=50&time_range=${artistTimeFrame}`, {'headers': header})
-      let artistArray = response.data.items
-      setArtists(artistArray)
-    }
-    fetchArtists()
+    fetchArtists(token, artistTimeFrame, header, setArtists)
   }, [artistTimeFrame])
 
 
