@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import TrackComponent from './TrackComponent'
-import { fetchTracks } from '../../lib/tracks/tracks'
+import { fetchTopTracks } from '../../lib/tracks/tracks'
 
  
 export default function TracksContainer({ trackData, showcaseHandler, showcaseClearHandler }) {
@@ -10,26 +10,40 @@ export default function TracksContainer({ trackData, showcaseHandler, showcaseCl
   let header = { 'Authorization': 'Bearer ' + token }
 
   
-  
     useEffect(() => {
-      fetchTracks(token, trackTimeFrame, header, setTracks)
-    }, [artistTimeFrame])
+      fetchTopTracks( trackTimeFrame, header, setTracks)
+      console.log(tracks)
+    }, [trackTimeFrame])
 
-    let TrackComponents = tracks.map((track, index) => {
-      return <TrackComponent 
-                key = { index } 
-                trackData = { track }
-                imageSource={ track.album.images[1].url } 
-                imageWidth = { track.album.images[1].width } 
-                imageHeight = { track.album.images[1].height } 
-                trackIndex = { index }
+    if (tracks) {
+      let TrackComponents = tracks.map((track, index) => {
+        return <TrackComponent 
+                  key = { index } 
+                  trackData = { track }
+                  imageSource={ track.album.images[1].url } 
+                  imageWidth = { track.album.images[1].width } 
+                  imageHeight = { track.album.images[1].height } 
+                  trackIndex = { index }
+  
+          />
+      })
 
-        />
-    })
-
+      
   return (
-    <div className='w-[80%] max-w-fit grid lg:w-[70%] xl:w-[50%] xl:max-w-6xl grid-cols-5  sm:grid-cols-5'>
-        { TrackComponents }
+    <div className='w-[80%] flex justify-center items-center flex-col '>
+        <nav className='w-4/5 max-w-lg  mb-8 flex justify-around  border-2 border-black '>
+          <a className='text-sm md:text-xl py-4 cursor-pointer' onClick = {() => setArtistTimeFrame('short_term')}>Current</a>
+          <a className='text-sm md:text-xl py-4 cursor-pointer' onClick = {() => setArtistTimeFrame('medium_term')}>Last 6 Months</a>
+          <a className='text-sm md:text-xl py-4 cursor-pointer' onClick = {() => setArtistTimeFrame('long_term')}>All Time</a>
+        </nav>
+        <div className=' max-w-fit  grid lg:w-[100%] xl:w-[80%] xl:max-w-6xl grid-cols-5 lg:grid-cols-10'>
+          { TrackComponents }
+        </div>
+ 
     </div>
   )
+
+    } else return null
+
+
 }

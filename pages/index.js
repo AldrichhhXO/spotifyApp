@@ -3,31 +3,27 @@ import {useState, useEffect } from 'react'
 import Layout from '../Components/Layout/Layout'
 import ShowcaseLayout from '../Components/Layout/ShowcaseLayout'
 import {useRouter} from 'next/router'
-import Axios from 'axios'
+
+import { fetchProfile } from '../lib/User/User'
 
 export default function Home() {
   let router = useRouter()
-  const [spotifyProfile, setSpotifyProfile] = useState('')
+  const [spotifyProfile, setSpotifyProfile] = useState()
   const [loading, isLoading] = useState(false)
-
 
   useEffect(() => {
     let access_token = router.query.access_token || localStorage.getItem('access_token') || null
     if (access_token) {
-
+      if (!localStorage.getItem('access_token')) localStorage.setItem('access_token', access_token)
       isLoading(true)
-      let spotifyRequests = {
-        userUrl: 'https://api.spotify.com/v1/me',
-        headers: {'Authorization': 'Bearer ' + access_token},
-      }
-
-      
-        let userRequest = Axios.get(spotifyRequests.userUrl, {'headers': spotifyRequests.headers})
+      fetchProfile(access_token, setSpotifyProfile)
+      isLoading(false)
+      window.history.replaceState({}, document.title, '/')
         
-          window.history.replaceState({}, document.title, '/')
-          return function cleanup() {
-            localStorage.clear()
-          }
+        
+        // return function cleanup() {
+        //   localStorage.clear()
+        // }
       /* This will remove the access code from the url */
       
     }
@@ -42,6 +38,7 @@ export default function Home() {
   }
   else {
     if (spotifyProfile) {
+  
       return (
         <ShowcaseLayout  />
       )

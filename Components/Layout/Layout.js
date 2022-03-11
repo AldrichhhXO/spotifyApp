@@ -4,7 +4,7 @@ export default function Layout({children}) {
   return (
     
       <>
-        <main className='border-2 border-black min-h-screen flex-center-col'>
+        <main className='border-2 border-black min-h-screen relative flex-center-col'>
           {children}
         </main>
       </>

@@ -42,7 +42,7 @@ export default function ShowcaseLayout() {
               <TracksContainer showcaseHandler = { showcaseItem } />
           </>
         )}
-        {(showcasedItem  && showcaseType) && <SpotifyShowcase showcaseId = { showcasedItem } type = { showcaseType }/>}
+        {/* {(showcasedItem  && showcaseType) && <SpotifyShowcase showcaseId = { showcasedItem } type = { showcaseType }/>} */}
     </>
   )
 }

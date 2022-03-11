@@ -18,9 +18,7 @@ interface ShowcaseType {
 
 export default function SpotifyShowcase({ showcaseId, type, artist } : ShowcaseType) {
     const [showcaseData, setShowcaseData] = useState()
-    
-
-
+    console.log(showcaseId)
     const fetchTrackData = async () : Promise<void> => {
 
     }
@@ -32,8 +30,8 @@ export default function SpotifyShowcase({ showcaseId, type, artist } : ShowcaseT
         
         
         try {
-          let showcaseResponse = await Axios(`https://api.spotify.com/v1/tracks/${showcaseId}?market=US`, { 'headers' : header})
-          setShowcaseData(showcaseResponse.data)
+          //let showcaseResponse = await Axios(`https://api.spotify.com/v1/tracks/${showcaseId}?market=US`, { 'headers' : header})
+          //setShowcaseData(showcaseResponse.data)
         }
         catch (error) {
           if (Axios.isAxiosError(error))
@@ -51,9 +49,9 @@ export default function SpotifyShowcase({ showcaseId, type, artist } : ShowcaseT
         Be able to determine between if it is a track or an artist
     */
   return (
-    <div className='absolute top-1/2 right-[12%] border-2 border-black  max-w-lg  h-16'>
+    <div className='absolute border-2 right-1 border-black  max-w-lg  h-16'>
 
-      <h1>The Weeknd</h1>
+      <h1>The Weekn</h1>
     </div>
   )
 }

@@ -13,12 +13,12 @@ export default function ArtistsContainer({ showcaseHandler, showcaseClearHandler
   let header = { 'Authorization': 'Bearer ' + token }
 
   useEffect(() => {
-    fetchArtists(token, artistTimeFrame, header, setArtists)
+    fetchArtists(artistTimeFrame, header, setArtists)
   }, [artistTimeFrame])
 
 
   if (artists) {
-    let ArtistComponents = artists.map((artist, index) => {
+    let ArtistComponents = artists.map((artist, index) => { 
 
       return (<ArtistComponent 
                 index = {index} 
@@ -39,7 +39,7 @@ export default function ArtistsContainer({ showcaseHandler, showcaseClearHandler
           <a className='text-sm md:text-xl py-4 cursor-pointer' onClick = {() => setArtistTimeFrame('medium_term')}>Last 6 Months</a>
           <a className='text-sm md:text-xl py-4 cursor-pointer' onClick = {() => setArtistTimeFrame('long_term')}>All Time</a>
         </nav> 
-        <div className=' max-w-fit border-2 border-black grid lg:w-[100%] xl:w-[80%] xl:max-w-6xl grid-cols-5 lg:grid-cols-10'>
+        <div className=' max-w-fit  grid lg:w-[100%] xl:w-[80%] xl:max-w-6xl grid-cols-5 lg:grid-cols-10'>
           { ArtistComponents }
         </div>
       </div>
