@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import TracksContainer from '../../Components/Tracks/TracksContainer'
 import ArtistsContainer from '../../Components/Artists/ArtistsContainer'
-import SpotifyShowcase from '../SpotifyShowcase'
+import SpotifyShowcase from '../Showcase/SpotifyShowcase'
+import ShowcaseComponent from '../Showcase/ShowcaseComponent'
 
 /**
  * 
@@ -24,7 +25,7 @@ export default function ShowcaseLayout() {
 
   return (
     <>
-        <nav className = "w-full h-fit border-2 border-black mt-12 flex justify-center">
+        <nav className = "w-[80%] h-fit border-2 border-black flex justify-center">
             <a className= 'mx-4 text-xl my-3' onClick = {() => setDataDisplay('Top_Artists')}>Your Top Artists</a>
             <a className= 'mx-4 text-xl my-3' onClick = {() => setDataDisplay('Top_Tracks')}>Your Top Tracks</a>
         </nav>
@@ -42,7 +43,8 @@ export default function ShowcaseLayout() {
               <TracksContainer showcaseHandler = { showcaseItem } />
           </>
         )}
-        {/* {(showcasedItem  && showcaseType) && <SpotifyShowcase showcaseId = { showcasedItem } type = { showcaseType }/>} */}
+        {(showcasedItem  && showcaseType) && <SpotifyShowcase showcaseId = { showcasedItem } type = { showcaseType }/>}
+        <ShowcaseComponent />
     </>
   )
 }

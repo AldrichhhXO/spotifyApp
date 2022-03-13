@@ -2,23 +2,26 @@ import Link from 'next/link'
 import {useState, useEffect } from 'react'
 import Layout from '../Components/Layout/Layout'
 import ShowcaseLayout from '../Components/Layout/ShowcaseLayout'
-import {useRouter} from 'next/router'
+import { useRouter  } from 'next/router'
 
 import { fetchProfile } from '../lib/User/User'
+
 
 export default function Home() {
   let router = useRouter()
   const [spotifyProfile, setSpotifyProfile] = useState()
   const [loading, isLoading] = useState(false)
 
+  // console.log(router.query.refresh_token)
   useEffect(() => {
-    let access_token = router.query.access_token || localStorage.getItem('access_token') || null
+    let access_token = localStorage.getItem('access_token') || router.query.access_token   || null
     if (access_token) {
       if (!localStorage.getItem('access_token')) localStorage.setItem('access_token', access_token)
       isLoading(true)
-      fetchProfile(access_token, setSpotifyProfile)
+      console.log()
+      fetchProfile(access_token.split('-R-')[0], setSpotifyProfile)
       isLoading(false)
-      window.history.replaceState({}, document.title, '/')
+      // window.history.replaceState({}, document.title, '/')
         
         
         // return function cleanup() {
@@ -38,7 +41,6 @@ export default function Home() {
   }
   else {
     if (spotifyProfile) {
-  
       return (
         <ShowcaseLayout  />
       )

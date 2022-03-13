@@ -35,12 +35,17 @@ export default function handler(req, res) {
     return request.post(authOptions, (error, response, body) => {
       
       if (!error && response.statusCode == 200) {
-        let access_token = body.access_token
-        let refresh_token = body.refresh_token
+
+        // let access_token = body.access_token 
+        // let refresh_token = body.refresh_token
+
+
+        // Experimental
+        let access_token = body.access_token + '-R-' + body.refresh_token
         
         // Sending the tokens to the new link as query params, # TODO: Be able to hide the tokens from plain site.
 
-        res.redirect('/?' + querystring.stringify({access_token: access_token, refresh_token: refresh_token}))
+        res.redirect('/?' + querystring.stringify({access_token: access_token}))
       } else {
         console.log(error)
         res.redirect('/#' + querystring.stringify({error: 'invalid_token'}))

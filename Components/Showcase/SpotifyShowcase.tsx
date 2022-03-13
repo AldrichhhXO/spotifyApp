@@ -12,13 +12,12 @@ s * 1. Need
 interface ShowcaseType {
   showcaseId: string,
   type: string,
-  artist: Object | null
 }
 
 
-export default function SpotifyShowcase({ showcaseId, type, artist } : ShowcaseType) {
-    const [showcaseData, setShowcaseData] = useState()
-    console.log(showcaseId)
+export default function SpotifyShowcase({ showcaseId, type } : ShowcaseType) {
+    const [ showcaseData, setShowcaseData ] = useState()
+    
     const fetchTrackData = async () : Promise<void> => {
 
     }
@@ -27,7 +26,14 @@ export default function SpotifyShowcase({ showcaseId, type, artist } : ShowcaseT
       const fetchShowcaseData  = async () : Promise<void> => {
         let access_token = localStorage.getItem('access_token')
         let header = { 'Authorization': 'Bearer ' + access_token }
-        
+      
+        if (type == 'Artist') {
+
+        } else if (type == 'Track') {
+
+        } else {
+          throw new Error('NEEDS A TYPE')
+        }
         
         try {
           //let showcaseResponse = await Axios(`https://api.spotify.com/v1/tracks/${showcaseId}?market=US`, { 'headers' : header})
@@ -49,7 +55,7 @@ export default function SpotifyShowcase({ showcaseId, type, artist } : ShowcaseT
         Be able to determine between if it is a track or an artist
     */
   return (
-    <div className='absolute border-2 right-1 border-black  max-w-lg  h-16'>
+    <div className='bg-white absolute top-0 right-0 mt-10'>
 
       <h1>The Weekn</h1>
     </div>

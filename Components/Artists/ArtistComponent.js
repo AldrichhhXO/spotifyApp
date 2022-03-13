@@ -8,7 +8,7 @@ export default function ArtistComponent({ index,  artistImageSrc, width, height,
   const [ previewUrl, setPreviewUrl] = useState()
 
   let token = localStorage.getItem('access_token')
-  let header = { 'Authorization': 'Bearer ' + token }
+  let header = { 'Authorization': 'Bearer ' + token.split('-R-')[0] }
   useEffect(() => {
     const fetchSongPreview = async () => {
       let response = await Axios.get(`https://api.spotify.com/v1/artists/${artistId}/top-tracks?market=US`, {'headers': header} )
