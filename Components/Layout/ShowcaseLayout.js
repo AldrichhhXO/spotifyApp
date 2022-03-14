@@ -3,6 +3,7 @@ import TracksContainer from '../../Components/Tracks/TracksContainer'
 import ArtistsContainer from '../../Components/Artists/ArtistsContainer'
 import SpotifyShowcase from '../Showcase/SpotifyShowcase'
 import ShowcaseComponent from '../Showcase/ShowcaseComponent'
+import ShowcaseContainer from '../Showcase/ShowcaseContainer'
 
 /**
  * 
@@ -10,8 +11,11 @@ import ShowcaseComponent from '../Showcase/ShowcaseComponent'
 export default function ShowcaseLayout() {
     // Used to determine the type of content being displayed
     const [dataDisplay, setDataDisplay] = useState('Top_Artists')
+
+
+    // Will display the highlighted element on a modal element
     const [ showcasedItem, setShowcasedItem ] = useState()
-     const [ showcaseType, setShowcaseType ] = useState()
+    const [ showcaseType, setShowcaseType ] = useState()
 
   
     const showcaseItem = (item, type) => {
@@ -44,7 +48,7 @@ export default function ShowcaseLayout() {
           </>
         )}
         {(showcasedItem  && showcaseType) && <SpotifyShowcase showcaseId = { showcasedItem } type = { showcaseType }/>}
-        <ShowcaseComponent />
+        <ShowcaseContainer showcaseId = { showcasedItem } showcasedData type = { showcaseType } />
     </>
   )
 }

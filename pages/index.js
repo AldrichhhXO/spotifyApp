@@ -24,9 +24,9 @@ export default function Home() {
       // window.history.replaceState({}, document.title, '/')
         
         
-        // return function cleanup() {
-        //   localStorage.clear()
-        // }
+        return function cleanup() {
+          localStorage.clear()
+        }
       /* This will remove the access code from the url */
       
     }
@@ -49,13 +49,13 @@ export default function Home() {
         <>
           <h2 className=" text-6xl my-5">Spotify Web App</h2>
           <section className='flex-center-row'>
-            <div className = "max-w-sm min-h-[300px] rounded overflow-hidden shadow-lg mx-3">
+            <div className = "max-w-sm min-h-[300px] rounded overflow-hidden shadow-lg mx-3 bg-white">
               <div className='text-lg px-10 py-20 '>Using Spotify's public API, be able to view the top tracks and artists that you've been listening to at various time periods, while also finding new music based on your current interests.</div>
             </div>
-            <div className='max-w-sm rounded overflow-hidden shadow-lg mx-3 min-h-[300px]'>
+            <div className='max-w-sm rounded overflow-hidden shadow-lg mx-3 min-h-[300px] bg-white'>
               <div className='text-lg px-10 py-20'>Explore your library of music by viewing recommended artists and tracks, based on the chosen track / artist</div>
             </div>
-            <div className='max-w-sm rounded overflow-hidden shadow-lg mx-3 min-h-[300px]'>
+            <div className='max-w-sm rounded overflow-hidden shadow-lg mx-3 min-h-[300px] bg-white'>
               <div className='text-lg px-10 py-20'>
                 Using Spotify's public API, be able to view the top tracks and artists that you've been listening to at various time periods, while also finding new music based on your current interests.
               </div>

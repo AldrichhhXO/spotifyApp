@@ -1,15 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
-
 import Axios from 'axios'
 
-export default function ArtistComponent({ index,  artistImageSrc, width, height, artistName, artistId, showcaseHandler, showcaseClearHandler }) {
+interface ArtistProps {
+  index: number,
+  artistImageSrc: string,
+  width: number,
+  height: number,
+  artistName: string,
+  artistId : string,
+  showcaseHandler: any,
+  showcaseClearHandler: any
+}
 
+export default function ArtistComponent( { index, artistImageSrc, width, height, artistName, artistId, showcaseHandler, showcaseClearHandler } : ArtistProps) {
+  let artist
   const [ previewUrl, setPreviewUrl] = useState()
-
+  const [ artistData, setArtistData ] = useState()
   let token = localStorage.getItem('access_token')
   let header = { 'Authorization': 'Bearer ' + token.split('-R-')[0] }
   useEffect(() => {
+    
     const fetchSongPreview = async () => {
       let response = await Axios.get(`https://api.spotify.com/v1/artists/${artistId}/top-tracks?market=US`, {'headers': header} )
       let sound = await response.data.tracks[0].preview_url

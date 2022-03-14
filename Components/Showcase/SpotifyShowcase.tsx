@@ -56,7 +56,7 @@ export default function SpotifyShowcase({ showcaseId, type } : ShowcaseType) {
     */
   return (
     <div className='bg-white absolute top-0 right-0 mt-10'>
-
+            
       <h1>The Weekn</h1>
     </div>
   )

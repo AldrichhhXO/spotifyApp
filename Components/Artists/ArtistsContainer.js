@@ -27,7 +27,7 @@ export default function ArtistsContainer({ showcaseHandler, showcaseClearHandler
                 height = {artist.images[1].height} 
                 artistName = {artist.name} 
                 artistId = {artist.id} 
-                showcaseHandler = {showcaseHandler } 
+                showcaseHandler = { showcaseHandler } 
                 showcaseClearHandler = {showcaseClearHandler}/>)
     })
 
@@ -39,7 +39,7 @@ export default function ArtistsContainer({ showcaseHandler, showcaseClearHandler
           <a className='text-sm md:text-xl py-4 cursor-pointer bg-white px-10' onClick = {() => setArtistTimeFrame('medium_term')}>Last 6 Months</a>
           <a className='text-sm md:text-xl py-4 cursor-pointer bg-white px-10' onClick = {() => setArtistTimeFrame('long_term')}>All Time</a>
         </nav> 
-        <div className=' max-w-fit  grid lg:w-[100%] xl:w-[80%] xl:max-w-6xl grid-cols-5 lg:grid-cols-5'>
+        <div className=' max-w-fit  grid lg:w-[100%] xl:w-[80%] xl:max-w-6xl grid-cols-5 lg:grid-cols-10'>
           { ArtistComponents }
         </div>
       </div>
