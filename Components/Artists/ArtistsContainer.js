@@ -22,6 +22,7 @@ export default function ArtistsContainer({ showcaseHandler, showcaseClearHandler
 
       return (<ArtistComponent 
                 index = {index} 
+                metadata = {artist}
                 artistImageSrc= { artist.images[1].url }
                 width = {artist.images[1].width} 
                 height = {artist.images[1].height} 

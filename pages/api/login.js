@@ -29,7 +29,6 @@ export default function handler(req, res) {
     let responseType = '?response_type=code'
     let queryString = querystring.parse(responseType)
     
-    console.log(process.env.Spotify_Client_Id)
     queryString.client_id = process.env.Spotify_Client_Id || null
     queryString.scope = "user-read-private user-top-read"
     queryString.redirect_uri = process.env.Redirect_Uri || null

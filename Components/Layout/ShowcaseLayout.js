@@ -12,12 +12,10 @@ export default function ShowcaseLayout() {
     // Used to determine the type of content being displayed
     const [dataDisplay, setDataDisplay] = useState('Top_Artists')
 
-
     // Will display the highlighted element on a modal element
     const [ showcasedItem, setShowcasedItem ] = useState()
     const [ showcaseType, setShowcaseType ] = useState()
 
-  
     const showcaseItem = (item, type) => {
       setShowcasedItem(item)
       setShowcaseType(type)
@@ -47,8 +45,8 @@ export default function ShowcaseLayout() {
               <TracksContainer showcaseHandler = { showcaseItem } />
           </>
         )}
-        {(showcasedItem  && showcaseType) && <SpotifyShowcase showcaseId = { showcasedItem } type = { showcaseType }/>}
-        <ShowcaseContainer showcaseId = { showcasedItem } showcasedData type = { showcaseType } />
+        {(showcasedItem  && showcaseType) &&  <ShowcaseContainer showcasedData = {showcasedItem} type = { showcaseType } />}
+       
     </>
   )
 }
