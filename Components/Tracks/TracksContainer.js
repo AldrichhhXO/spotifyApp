@@ -24,7 +24,8 @@ export default function TracksContainer({ trackData, showcaseHandler, showcaseCl
                   imageWidth = { track.album.images[1].width } 
                   imageHeight = { track.album.images[1].height } 
                   trackIndex = { index }
-  
+                  showcaseHandler = { showcaseHandler }
+                  showcaseClearHandler = {showcaseClearHandler}
           />
       })
 

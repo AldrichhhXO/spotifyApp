@@ -1,13 +1,8 @@
 import React, {useState} from 'react'
 import TracksContainer from '../../Components/Tracks/TracksContainer'
 import ArtistsContainer from '../../Components/Artists/ArtistsContainer'
-import SpotifyShowcase from '../Showcase/SpotifyShowcase'
-import ShowcaseComponent from '../Showcase/ShowcaseComponent'
 import ShowcaseContainer from '../Showcase/ShowcaseContainer'
 
-/**
- * 
- */
 export default function ShowcaseLayout() {
     // Used to determine the type of content being displayed
     const [dataDisplay, setDataDisplay] = useState('Top_Artists')
@@ -42,7 +37,7 @@ export default function ShowcaseLayout() {
         {dataDisplay == 'Top_Tracks' && (
           <>
               <strong><h1 className='my-10'>Your Top Tracks</h1></strong>
-              <TracksContainer showcaseHandler = { showcaseItem } />
+              <TracksContainer showcaseHandler = { showcaseItem } showcaseClearHandler = {clearShowCase}/>
           </>
         )}
         {(showcasedItem  && showcaseType) &&  <ShowcaseContainer showcasedData = {showcasedItem} type = { showcaseType } />}

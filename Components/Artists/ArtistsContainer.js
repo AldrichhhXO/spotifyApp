@@ -29,7 +29,7 @@ export default function ArtistsContainer({ showcaseHandler, showcaseClearHandler
                 artistName = {artist.name} 
                 artistId = {artist.id} 
                 showcaseHandler = { showcaseHandler } 
-                showcaseClearHandler = {showcaseClearHandler}/>)
+                showcaseClearHandler = {showcaseClearHandler} />)
     })
 
 

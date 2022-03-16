@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 
-export default function TrackComponent({ trackData, imageSource, imageWidth, imageHeight, trackIndex}) {
+export default function TrackComponent({ trackData, imageSource, imageWidth, imageHeight, trackIndex, showcaseHandler, showcaseClearHandler }) {
     const [albumData, setAlbumData] = useState(trackData.album)
     const [songName, setSongName] = useState(trackData.name)
     const [previewUrl, setPreviewUrl] = useState(trackData.preview_url)
@@ -20,11 +20,9 @@ export default function TrackComponent({ trackData, imageSource, imageWidth, ima
     }
 
   return (
-    <div className='my-[-3px] hover:opacity-60' onMouseEnter={showcaseTrack} onMouseLeave = {stopShowcase} >
+    <div className='my-[-3px] hover:opacity-60' onMouseEnter={() => showcaseHandler(trackData, 'Track')} onMouseLeave = {() => showcaseClearHandler()} >
         <Image src = {imageSource} width = {imageWidth} height = {imageHeight} />
-        {/* <audio preload id = {`player-${trackIndex}`} >
-           <source src = { previewUrl } type = "audio/mpeg"/> 
-        </audio> */}
+
     </div>
   )
 }

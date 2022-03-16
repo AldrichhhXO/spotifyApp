@@ -5,28 +5,27 @@ import Image from 'next/image'
  * Showcase component for the track / ID.
  * @returns 
  */
-export default function ShowcaseComponent({ showcasedData }) {
-  // if (showcasedData) console.log("ye: " + JSON.stringify(showcasedData))
-  // This will be the return if it is an Artist
+export default function ShowcaseComponent({ showcasedData, type }) {
+  console.log(showcasedData)
+  let showcaseImageObject
+  let showcaseAlbum
+  if (type == 'Artist') showcaseImageObject = showcasedData.images[1]
+  else if (type == 'Track') { 
+    showcaseImageObject = showcasedData.album.images[1]
+    showcaseAlbum = showcasedData.data
+  }
+
+  let {url , width, height} = showcaseImageObject
+  
   return (
     <div className=' w-[600px] h-[700px] border-2 border-black bg-white shadow-xl flex flex-col justify-center items-center'>
       <div>
         {/* Artist Image goes here */}
-        <h1 className='w-[100%]'>{showcasedData.name}</h1>
+        <Image  src = {url} width = {width} height = {height} alt = {showcasedData.name}/>
+        <strong><h1 className='w-[100%] text-center my-6 text-xl'>{showcasedData.name}</h1></strong>
+        
       </div>
-
-{/*       
-     <div className='w-4/5 my-3 border-red-800 border-2 '>
-        <h5 className='border- border-2 '>Top Songs</h5>
-        <div className='  h-fit border-2 border-black flex mx-2 '>
-          <div className='border-2 border-black w-[40px] h-[40px] rounded-full mx-1 shadow-xl'></div>
-          <div className='border-2 border-black w-[40px] h-[40px] rounded-full mx-1 shadow-xl'></div>
-          <div className='border-2 border-black w-[40px] h-[40px] rounded-full mx-1 shadow-xl'></div>
-          <div className='border-2 border-black w-[40px] h-[40px] rounded-full mx-1 shadow-xl'></div>
-        </div>
-     </div> */}
-      
-
     </div>
   )
+
 }
