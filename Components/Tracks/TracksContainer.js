@@ -37,7 +37,7 @@ export default function TracksContainer({ trackData, showcaseHandler, showcaseCl
           <a className='text-sm md:text-xl py-4 cursor-pointer' onClick = {() => setTrackTimeFrame('medium_term')}>Last 6 Months</a>
           <a className='text-sm md:text-xl py-4 cursor-pointer' onClick = {() => setTrackTimeFrame('long_term')}>All Time</a>
         </nav>
-        <div className=' max-w-fit  grid lg:w-[100%] xl:w-[80%] xl:max-w-6xl grid-cols-5 lg:grid-cols-5'>
+        <div className=' max-w-fit  grid lg:w-[100%] xl:w-[80%] xl:max-w-6xl grid-cols-5 lg:grid-cols-10'>
           { TrackComponents }
         </div>
  

@@ -22,9 +22,9 @@ export default function ShowcaseLayout() {
 
   return (
     <>
-        <nav className = "w-[80%] h-fit border-2 border-black flex justify-center">
-            <a className= 'mx-4 text-xl my-3' onClick = {() => setDataDisplay('Top_Artists')}>Your Top Artists</a>
-            <a className= 'mx-4 text-xl my-3' onClick = {() => setDataDisplay('Top_Tracks')}>Your Top Tracks</a>
+        <nav className = "w-fit h-fit  flex justify-center">
+            <a className= 'mx-4 text-xl my-3 bg-white px-5 py-3 rounded-lg cursor-pointer hover:shadow-lg' onClick = {() => setDataDisplay('Top_Artists')}>Your Top Artists</a>
+            <a className= 'mx-4 text-xl my-3 bg-white px-5 py-3 rounded-lg cursor-pointer hover:shadow-lg' onClick = {() => setDataDisplay('Top_Tracks')}>Your Top Tracks</a>
         </nav>
 
         {dataDisplay == 'Top_Artists' && (
@@ -41,7 +41,7 @@ export default function ShowcaseLayout() {
           </>
         )}
         {(showcasedItem  && showcaseType) &&  <ShowcaseContainer showcasedData = {showcasedItem} type = { showcaseType } />}
-       
+        
     </>
   )
 }
