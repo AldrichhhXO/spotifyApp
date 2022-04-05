@@ -3,6 +3,8 @@ import TracksContainer from '../../Components/Tracks/TracksContainer'
 import ArtistsContainer from '../../Components/Artists/ArtistsContainer'
 import ShowcaseContainer from '../Showcase/ShowcaseContainer'
 
+import { useSelector } from 'react-redux'
+
 export default function ShowcaseLayout() {
     // Used to determine the type of content being displayed
     const [dataDisplay, setDataDisplay] = useState('Top_Artists')
@@ -10,6 +12,9 @@ export default function ShowcaseLayout() {
     // Will display the highlighted element on a modal element
     const [ showcasedItem, setShowcasedItem ] = useState()
     const [ showcaseType, setShowcaseType ] = useState()
+
+    const displayType = useSelector(state => state.dataFilter.type)
+    console.log("Type: ", displayType)
 
     const showcaseItem = (item, type) => {
       setShowcasedItem(item)

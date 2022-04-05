@@ -2,10 +2,8 @@ import Link from 'next/link'
 import {useState, useEffect } from 'react'
 import Layout from '../Components/Layout/Layout'
 import ShowcaseLayout from '../Components/Layout/ShowcaseLayout'
-import { useRouter  } from 'next/router'
-
+import { useRouter } from 'next/router'
 import { fetchProfile } from '../lib/User/User'
-
 
 export default function Home() {
   let router = useRouter()
@@ -14,21 +12,18 @@ export default function Home() {
 
   // console.log(router.query.refresh_token)
   useEffect(() => {
-    let access_token = localStorage.getItem('access_token') || router.query.access_token   || null
+    let access_token = localStorage.getItem('access_token') || router.query.access_token  || null
     if (access_token) {
       if (!localStorage.getItem('access_token')) localStorage.setItem('access_token', access_token)
       isLoading(true)
-      console.log()
       fetchProfile(access_token.split('-R-')[0], setSpotifyProfile)
       isLoading(false)
       // window.history.replaceState({}, document.title, '/')
-        
         
         return function cleanup() {
           localStorage.clear()
         }
       /* This will remove the access code from the url */
-      
     }
   }, [router.query])
 
@@ -50,14 +45,14 @@ export default function Home() {
           <h2 className=" text-6xl my-5">Spotify Web App</h2>
           <section className='flex-center-row'>
             <div className = "max-w-sm min-h-[300px] rounded overflow-hidden shadow-lg mx-3 bg-white">
-              <div className='text-lg px-10 py-20 '>Using Spotify's public API, be able to view the top tracks and artists that you've been listening to at various time periods, while also finding new music based on your current interests.</div>
+              <div className='text-lg px-10 py-20 '>Using Spotify&apos;s public API, be able to view the top tracks and artists that you&apos;ve been listening to at various time periods, while also finding new music based on your current interests.</div>
             </div>
             <div className='max-w-sm rounded overflow-hidden shadow-lg mx-3 min-h-[300px] bg-white'>
               <div className='text-lg px-10 py-20'>Explore your library of music by viewing recommended artists and tracks, based on the chosen track / artist</div>
             </div>
             <div className='max-w-sm rounded overflow-hidden shadow-lg mx-3 min-h-[300px] bg-white'>
               <div className='text-lg px-10 py-20'>
-                Using Spotify's public API, be able to view the top tracks and artists that you've been listening to at various time periods, while also finding new music based on your current interests.
+                Using Spotify&apos;s public API, be able to view the top tracks and artists that you&apos;ve been listening to at various time periods, while also finding new music based on your current interests.
               </div>
             </div>
           </section>

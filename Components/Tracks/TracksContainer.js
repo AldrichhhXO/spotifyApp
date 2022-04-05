@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import TrackComponent from './TrackComponent'
 import { fetchTopTracks } from '../../lib/tracks/tracks'
-
  
 export default function TracksContainer({ trackData, showcaseHandler, showcaseClearHandler }) {
   const [tracks, setTracks ] = useState()
