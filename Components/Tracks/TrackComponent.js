@@ -20,7 +20,7 @@ export default function TrackComponent({ trackData, imageSource, imageWidth, ima
     }
 
   return (
-    <div className='my-[-3px] hover:opacity-60' onMouseEnter={() => showcaseHandler(trackData, 'Track')} onMouseLeave = {() => showcaseClearHandler()} >
+    <div className='my-[-3px] hover:opacity-60' onMouseEnter={() => showcaseHandler(trackData, 'Track')} title = {songName} onMouseLeave = {() => showcaseClearHandler()} >
         <Image src = {imageSource} width = {imageWidth} height = {imageHeight} />
 
     </div>

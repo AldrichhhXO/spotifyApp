@@ -15,4 +15,4 @@ import rootReducer from './reducer';
 // const persistedAccessToken = localStorage.getItem('acccess-token')
 // if (persistedAccessToken) preloadedState = parseToken(persistedAccessToken)
 
-const store = configureStore(rootReducer)
+// const store = configureStore(rootReducer)

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { fetchArtists } from '../../lib/Artists/Artists'
-
-import Axios from 'axios'
+import ShowcaseGrid from '../Showcase/ShowcaseGrid'
 import ArtistComponent from './ArtistComponent'
 
-export default function ArtistsContainer({ showcaseHandler, showcaseClearHandler }) {
+export default function ArtistsContainer({ showcaseModalHandler }) {
   const [artists, setArtists] = useState()
   const [artistTimeFrame, setArtistTimeFrame] = useState('medium_term')
 
@@ -27,22 +26,21 @@ export default function ArtistsContainer({ showcaseHandler, showcaseClearHandler
                 width = {artist.images[1].width} 
                 height = {artist.images[1].height} 
                 artistName = {artist.name} 
-                artistId = {artist.id} 
-                showcaseHandler = { showcaseHandler } 
-                showcaseClearHandler = {showcaseClearHandler} />)
+                artistId = {artist.id}
+                modalHandler = {showcaseModalHandler}
+                 />)
     })
 
-
     return (
-      <div className='w-[80%]  flex justify-center items-center flex-col'>
-        <nav className='w-[100%] max-w-lg  mb-8 flex justify-around  border-2 border-black '>
-          <a className='text-sm md:text-xl py-4 cursor-pointer bg-white px-10' onClick = {() => setArtistTimeFrame('short_term')}>Current</a>
-          <a className='text-sm md:text-xl py-4 cursor-pointer bg-white px-10' onClick = {() => setArtistTimeFrame('medium_term')}>Last 6 Months</a>
-          <a className='text-sm md:text-xl py-4 cursor-pointer bg-white px-10' onClick = {() => setArtistTimeFrame('long_term')}>All Time</a>
+      <div className='w-[90%] max-w-[1140px]  flex justify-center items-end flex-col'>
+        <nav className='w-[100%] max-w-lg flex justify-center sm:block'>
+          <a className='text-sm md:text-lg py-4 px-3 cursor-pointer text-white float-right' onClick = {() => setArtistTimeFrame('long_term')}>All Time</a>
+          <a className='text-sm md:text-lg py-4 px-3 cursor-pointer text-white float-right' onClick = {() => setArtistTimeFrame('medium_term')}>Last 6 Months</a>
+          <a className='text-sm md:text-lg py-4 px-3 cursor-pointer text-white float-right' onClick = {() => setArtistTimeFrame('short_term')}>Current</a>
         </nav> 
-        <div className=' max-w-fit  grid lg:w-[100%] xl:w-[80%] xl:max-w-6xl grid-cols-5 lg:grid-cols-10'>
+        <ShowcaseGrid>
           { ArtistComponents }
-        </div>
+        </ShowcaseGrid>
       </div>
     )
     

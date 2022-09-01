@@ -27,14 +27,13 @@ interface ArtistProps {
   height: number,
   artistName: string,
   artistId : string,
-  showcaseHandler: any,
-  showcaseClearHandler: any
+  showcaseModalHandler: React.Dispatch<React.SetStateAction<String>>
+ 
 }
 
-export default function ArtistComponent({ index, metadata, artistImageSrc, width, height, artistName, artistId, showcaseHandler, showcaseClearHandler } : ArtistProps) {
+export default function ArtistComponent({ index, metadata, artistImageSrc, width, height, artistName, artistId, showcaseModalHandler } : ArtistProps) {
   const [ previewUrl, setPreviewUrl] = useState()
   const [ artistData, setArtistData ] = useState()
-  
 
   let token = localStorage.getItem('access_token')
   let header = { 'Authorization': 'Bearer ' + token.split('-R-')[0] }
@@ -56,9 +55,8 @@ export default function ArtistComponent({ index, metadata, artistImageSrc, width
   }, [artistId])
 
   return (
-    <div className = "my-[-3px] hover:opacity-60" onMouseEnter={() => showcaseHandler(metadata, 'Artist')} onMouseLeave = {() => showcaseClearHandler()}>
+    <div className = "my-[-3px] cursor-pointer hover:opacity-60"  title = {artistName} onClick = {() => showcaseModalHandler(artistId)}>
       <Image key = {index} src = {artistImageSrc} width = {width} height = {height} alt = {artistName}/>
-
   </div>
   )
 }

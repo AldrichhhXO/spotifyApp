@@ -17,15 +17,14 @@ export default function ShowcaseComponent({ showcasedData, type }) {
     showcaseArtists = showcasedData.artists
   }
   let {url , width, height} = showcaseImageObject
-  
 
   return (
-    <div className='w-[520px] h-[700px] border-2 border-black bg-lime-800 shadow-xl flex flex-col justify-center items-center'>
-      <div>
+    <div className='w-[80%] h-[40%] sm:h-[90%] max-w-[500px] max-h-[600px] bg-lime-800 shadow-xl rounded-md flex flex-row lg:flex-col justify-center items-center z-10 '>
+      <div className='px-5'>
         <Image  src = {url} width = {width} height = {height} alt = {showcasedData.name}/>
       </div>
       <div className=' w-full text-white'> 
-        <strong><h1 className='w-[90%] mx-auto text-center my-6 text-2xl '>{showcasedData.name}</h1></strong>
+        <strong><h1 className='w-[90%] mx-auto text-center my-6 text-md  sm:text-lg lg:text-2xl'>{showcasedData.name}</h1></strong>
         <div className='flex justify-center flex-col items-center'>
           {showcaseArtists && showcaseArtists.map((artist) => <p className='text-xl'>{artist.name}</p>)}
         </div>

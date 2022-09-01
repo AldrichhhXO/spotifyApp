@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import TrackComponent from './TrackComponent'
 import { fetchTopTracks } from '../../lib/tracks/tracks'
+import ShowcaseGrid from '../Showcase/ShowcaseGrid'
  
 export default function TracksContainer({ trackData, showcaseHandler, showcaseClearHandler }) {
   const [tracks, setTracks ] = useState()
@@ -30,16 +31,15 @@ export default function TracksContainer({ trackData, showcaseHandler, showcaseCl
 
       
   return (
-    <div className='w-[80%] flex justify-center items-center flex-col '>
-        <nav className='w-4/5 max-w-lg  mb-8 flex justify-around  border-2 border-black '>
-          <a className='text-sm md:text-xl py-4 cursor-pointer' onClick = {() => setTrackTimeFrame('short_term')}>Current</a>
-          <a className='text-sm md:text-xl py-4 cursor-pointer' onClick = {() => setTrackTimeFrame('medium_term')}>Last 6 Months</a>
-          <a className='text-sm md:text-xl py-4 cursor-pointer' onClick = {() => setTrackTimeFrame('long_term')}>All Time</a>
-        </nav>
-        <div className=' max-w-fit  grid lg:w-[100%] xl:w-[80%] xl:max-w-6xl grid-cols-5 lg:grid-cols-10'>
+    <div className='w-[90%] max-w-[1140px]  flex justify-center items-end flex-col '>
+        <nav className='w-[100%] max-w-lg flex justify-center sm:block'>
+          <a className='text-sm md:text-lg py-4 px-3 cursor-pointer text-white float-right' onClick = {() => setArtistTimeFrame('long_term')}>All Time</a>
+          <a className='text-sm md:text-lg py-4 px-3 cursor-pointer text-white float-right' onClick = {() => setArtistTimeFrame('medium_term')}>Last 6 Months</a>
+          <a className='text-sm md:text-lg py-4 px-3 cursor-pointer text-white float-right' onClick = {() => setArtistTimeFrame('short_term')}>Current</a>
+        </nav> 
+        <ShowcaseGrid>
           { TrackComponents }
-        </div>
- 
+        </ShowcaseGrid>
     </div>
   )
 
