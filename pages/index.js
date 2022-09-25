@@ -4,17 +4,12 @@ import Layout from '../Components/Layout/Layout'
 import ShowcaseLayout from '../Components/Layout/ShowcaseLayout'
 import { useRouter } from 'next/router'
 import { fetchProfile } from '../lib/User/User'
-import ShowcaseContainer from '../Components/Showcase/ShowcaseContainer'
-
-import ArtistModal from '../Components/ArtistModal'
 
 export default function Home() {
   let router = useRouter()
   const [spotifyProfile, setSpotifyProfile] = useState()
   const [loading, isLoading] = useState(false)
 
-
-  // console.log(router.query.refresh_token)
   useEffect(() => {
     let access_token = localStorage.getItem('access_token') || router.query.access_token  || null
     if (access_token) {
@@ -23,7 +18,7 @@ export default function Home() {
       fetchProfile(access_token.split('-R-')[0], setSpotifyProfile)
       isLoading(false)
        window.history.replaceState({}, document.title, '/')
-        
+       document.title = "Discovery"
         return function cleanup() {
           localStorage.clear()
         }
@@ -53,8 +48,7 @@ export default function Home() {
             </div>
             <div className='bg-gray-800 max-w-sm rounded overflow-hidden shadow-lg my-3  min-h-[300px]'>
               <div className='text-lg px-10 py-20 text-white'>Explore your library of music by viewing recommended artists and tracks, based on the chosen track / artist</div>
-            </div>
-
+            </div>  
           </section>
           <div className='my-10'>
           <Link href = "/api/login" passHref><button className='rounded-md my-16 bg-emerald-700 px-10 py-2 text-xl mx-auto text-white hover:border-2 hover:border-emerald-700 hover:bg-black hover:text-white transition-all duration-100 mt-2'>Get Started</button></Link>

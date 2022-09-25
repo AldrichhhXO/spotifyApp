@@ -38,13 +38,12 @@ export default function ArtistComponent({ index, metadata, artistImageSrc, width
   let token = localStorage.getItem('access_token')
   let header = { 'Authorization': 'Bearer ' + token.split('-R-')[0] }
   useEffect(() => {
-    
-    const fetchSongPreview = async () => {
-      let response = await Axios.get(`https://api.spotify.com/v1/artists/${artistId}/top-tracks?market=US`, {'headers': header} )
-      let sound = await response.data.tracks[0].preview_url
-      console.log(sound)
-      setPreviewUrl(sound)
-    }
+    // const fetchSongPreview = async () => {
+    //   let response = await Axios.get(`https://api.spotify.com/v1/artists/${artistId}/top-tracks?market=US`, {'headers': header} )
+    //   let sound = await response.data.tracks[0].preview_url
+    //   console.log(sound)
+    //   setPreviewUrl(sound)
+    // }
     try {
       // fetchSongPreview()
     }

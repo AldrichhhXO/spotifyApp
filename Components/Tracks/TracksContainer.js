@@ -3,7 +3,7 @@ import TrackComponent from './TrackComponent'
 import { fetchTopTracks } from '../../lib/tracks/tracks'
 import ShowcaseGrid from '../Showcase/ShowcaseGrid'
  
-export default function TracksContainer({ trackData, showcaseHandler, showcaseClearHandler }) {
+export default function TracksContainer({ showcaseModalHandler }) {
   const [tracks, setTracks ] = useState()
   const [trackTimeFrame, setTrackTimeFrame] = useState('medium_term')
   let token = localStorage.getItem('access_token')
@@ -24,8 +24,6 @@ export default function TracksContainer({ trackData, showcaseHandler, showcaseCl
                   imageWidth = { track.album.images[1].width } 
                   imageHeight = { track.album.images[1].height } 
                   trackIndex = { index }
-                  showcaseHandler = { showcaseHandler }
-                  showcaseClearHandler = {showcaseClearHandler}
           />
       })
 
