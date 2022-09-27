@@ -6,20 +6,22 @@ import ArtistComponent from './ArtistComponent'
 export default function ArtistsContainer({ showcaseModalHandler }) {
   const [artists, setArtists] = useState()
   const [artistTimeFrame, setArtistTimeFrame] = useState('medium_term')
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
   // Change this to React.Context
   let token = localStorage.getItem('access_token')
   let header = { 'Authorization': 'Bearer ' + token.split('-R-')[0] }
 
+  // Sets the artists viewed based on time frame.
   useEffect(() => {
     fetchArtists(artistTimeFrame, header, setArtists)
+    console.log(artists)
   }, [artistTimeFrame])
 
-
+  
   if (artists) {
     let ArtistComponents = artists.map((artist, index) => { 
-
       return (<ArtistComponent 
+                key = {index}
                 index = {index} 
                 metadata = {artist}
                 artistImageSrc= { artist.images[1].url }

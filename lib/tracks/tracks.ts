@@ -10,5 +10,16 @@ export const fetchTopTracks = async ( time_range: string, header: AxiosRequestHe
     } catch (error) {
         if (Axios.isAxiosError(error)) console.log(error.response.status)
     }
+}
 
+/**
+ * This will fetch the recommended tracks of a current track
+ */
+export const fetchRecommendedTracks = async () => {
+    try {
+
+    }
+    catch (error) {
+
+    }
 }

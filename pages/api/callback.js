@@ -38,8 +38,8 @@ export default function handler(req, res) {
         // Experimental
         let access_token = body.access_token + '-R-' + body.refresh_token
         
-        res.cookie('access_token', access_token);
-        res.redirect('/?')
+        //res.cookie('access_token', access_token);
+        res.redirect('/?' + querystring.stringify({access_token: access_token}))
       } else {
         console.log(error)
         res.redirect('/#' + querystring.stringify({error: 'invalid_token'}))
