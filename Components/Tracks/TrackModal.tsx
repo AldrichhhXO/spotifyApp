@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { GrFormClose } from 'react-icons/gr'
 import { fetchRelatedArtists } from '../../lib/Artists/Artists'
 
-export default function TrackModal({ metadata, clearModalHandler}) {
+export default function TrackModal({ metadata, modalUpdate, clearModalHandler}) {
   const { name, album, id, artists} = metadata
   let { images } = album
   let [relatedArtists, setRelatedArtists] = useState([])
@@ -23,7 +23,8 @@ export default function TrackModal({ metadata, clearModalHandler}) {
   console.log(SongArtists)
 
   let RelatedArtists = relatedArtists.map((artist, index) => {
-    return <div title = {artist.name} key = {index} className='inline-block mx-1'><Image src = {artist.images[2].url}  width = {60} height = {60} className='rounded-full' /></div>
+    console.log(artist)
+    return <div title = {artist.name} key = {index} className='inline-block mx-1' onClick={() => modalUpdate(artist)} ><Image src = {artist.images[2].url}  width = {60} height = {60} className='rounded-full' /></div>
 } )
   
   return (

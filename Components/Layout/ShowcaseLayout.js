@@ -17,7 +17,6 @@ export default function ShowcaseLayout() {
       setModalToggler(!modalToggler)
       setModalType(metadata.type)
       setModalData(metadata)
-      console.log(metadata.type)
     }
 
     let clearModal = () => {
@@ -26,13 +25,18 @@ export default function ShowcaseLayout() {
       setModalData({})
     }
 
+    let updateModal = (metadata) => {
+      setModalType(metadata.type)
+      setModalData(metadata)
+    }
+
     
 
   return (
     <div className='w-full h-full'>
           
-         { modalToggler && modalType == 'artist' ? <ArtistModal metadata={modalData} clearModalHandler = {clearModal} /> : null}
-         { modalToggler && modalType == 'track' ? <TrackModal metadata={modalData} clearModalHandler = {clearModal} /> : null}
+         { modalToggler && modalType == 'artist' ? <ArtistModal metadata={modalData} modalUpdate = {updateModal} clearModalHandler = {clearModal} /> : null}
+         { modalToggler && modalType == 'track' ? <TrackModal metadata={modalData} modalUpdate = {updateModal} clearModalHandler = {clearModal} /> : null}
         <nav className='absolute  w-full'>
           <a className= 'hidden mx-1 text-xl my-3 px-5 py-3 rounded-lg cursor-pointer hover:shadow-lg md:inline-block float-right text-white' onClick = {() => setDataDisplay('Top_Artists')}>Artists</a>
           <a className= 'hidden mx-1 text-xl my-3 px-5 py-3 rounded-lg cursor-pointer hover:shadow-lg md:inline-block float-right text-white' onClick = {() => setDataDisplay('Top_Tracks')}>Tracks</a>
