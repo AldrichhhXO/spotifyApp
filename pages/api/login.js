@@ -30,7 +30,7 @@ export default function handler(req, res) {
     let queryString = querystring.parse(responseType)
     
     queryString.client_id = process.env.Spotify_Client_Id || null
-    queryString.scope = "user-read-private user-top-read"
+    queryString.scope = "user-read-private user-top-read user-follow-modify user-follow-modify user-library-modify"
     queryString.redirect_uri = process.env.Redirect_Uri || null
     queryString.state = state
     const stringified = querystring.stringify(queryString)

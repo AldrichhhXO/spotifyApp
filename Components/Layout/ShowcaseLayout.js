@@ -34,7 +34,6 @@ export default function ShowcaseLayout() {
 
   return (
     <div className='w-full h-full'>
-          
          { modalToggler && modalType == 'artist' ? <ArtistModal metadata={modalData} modalUpdate = {updateModal} clearModalHandler = {clearModal} /> : null}
          { modalToggler && modalType == 'track' ? <TrackModal metadata={modalData} modalUpdate = {updateModal} clearModalHandler = {clearModal} /> : null}
         <nav className='absolute  w-full'>

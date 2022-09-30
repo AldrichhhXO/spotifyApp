@@ -46,8 +46,24 @@ export const fetchArtistsTopTracks  = async (artistId: string, headers: AxiosReq
         let artistsTopTracksResponse = await Axios.get(`https://api.spotify.com/v1/artists/${artistId}/top-tracks?market=US`, {'headers': headers})
         let topTracks = artistsTopTracksResponse.data.tracks
         stateChanger(topTracks)
-        console.log(topTracks)
     } catch (error) {
         if (Axios.isAxiosError(error)) console.log(error.response.status)
+    }
+}
+
+/**
+ * @description Checks if the current user is following the selected Artist
+ * @param artistId The Artist that is being Checked
+ * @param headers The Access Code Headers
+ * @param stateChanger 
+ */
+export const ArtistCheck = async (artistId: string, headers: AxiosRequestHeaders, stateChanger) => {
+    try {
+        console.log(headers)
+        let artistCheckResponse = await Axios.get(`https://api.spotify.com/v1/me/following/contains?type=artist&ids=${artistId}`, {'headers': headers})
+        let artistCheck = artistCheckResponse.data
+        stateChanger(artistCheck)
+    } catch (error) {
+        if (Axios.isAxiosError(error)) console.log(error.response.data)
     }
 }
