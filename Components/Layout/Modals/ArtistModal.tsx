@@ -1,65 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { GrFormClose } from 'react-icons/gr'
-import { fetchArtistsTopTracks, fetchRelatedArtists, ArtistCheck } from '../lib/Artists/Artists'
-
-// Type for the analysis container
-interface SpotifyArtist {
-    external_urls: string,
-    followers: {
-      href: null,
-      total: number
-    },
-    genre: Array<string>,
-    href: string,
-    id: string,
-    images: Array<SpotifyImage>,
-    name: string,
-    popularity: number,
-    type: string
-    uri: string
-  }
-
-
-interface SpotifyTrack {
-    album: SpotifyAlbum,
-    artists: Array<Object>,
-    disc_number: number,
-    duration_ms: number,
-    explicit: boolean,
-    external_ids: Object,
-    external_urls: Object,
-    href: string,
-    id: string,
-    is_local: boolean,
-    is_playable: boolean,
-    name: string,
-    popularity: number,
-    preview_url: string,
-    track_number: number,
-    type: string,
-    uri: string
-}
-
-
-type SpotifyImage =  {
-    height: number,
-    url: string,
-    width: number
-}
-
-type SpotifyAlbum = {
-    album_type: string,
-    id: string,
-    images: SpotifyImage,
-    name: string,
-    release_date: string,
-    release_day_precision: string,
-    total_tracks: number,
-    type: string,
-    uri: string
-}
-
+import { fetchArtistsTopTracks, fetchRelatedArtists, ArtistCheck } from '../../../lib/Artists/Artists'
+import { SpotifyArtist, SpotifyTrack } from '../../../Types/SpotifyTypes'
+import { AxiosRequestHeaders } from 'axios'
 
 /**
  * ArtistModal, Appears when an artist is clicked in the showcase.
@@ -68,29 +12,24 @@ type SpotifyAlbum = {
  * @returns 
  */
 export default function ArtistModal({ metadata, modalUpdate, clearModalHandler }) {
-
     const { name, genres, images, id } = metadata
     let artistImage = images[2]
     let artistGenres = genres.map((genre) => { return genre + ", " })
     
     // Modal data
-    let [topTracks, setTopTracks] = useState([])
-    let [relatedArtists, setRelatedArtists] = useState([])
-    let [isFollowed, setIsFollowed] = useState()
-
+    let [topTracks, setTopTracks] = useState<SpotifyTrack[]>([])
+    let [relatedArtists, setRelatedArtists] = useState<SpotifyArtist[]>([])
+    let [isFollowed, setIsFollowed] = useState<boolean>()
 
     // Selected Artist Data
     let [selectedArtist, setSelectedArtist] = useState<SpotifyArtist>()
     let [selectedTrack, setSelectedTrack] = useState<SpotifyTrack>()
     let [selectedType, setSelectedType] = useState('')
 
-
-
-    let modalShowcase = (spotifyData, type) =>  { 
+    let modalShowcase = (spotifyData , type : string) =>  { 
         setSelectedType(type)
         if (type == 'artist') {
             setSelectedArtist(spotifyData)
-            
         }
         else if (type == 'track') {
             setSelectedTrack(spotifyData)
@@ -98,8 +37,8 @@ export default function ArtistModal({ metadata, modalUpdate, clearModalHandler }
      } 
 
     // Access token variables / headers
-    let access_token = localStorage.getItem('access_token')
-    let headers = { 'Authorization': 'Bearer ' + access_token.split('-R-')[0]}
+    let access_token : string  = localStorage.getItem('access_token')
+    let headers : AxiosRequestHeaders = { 'Authorization': 'Bearer ' + access_token.split('-R-')[0]}
 
      // Currently only for Artists
     useEffect(() => {

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import TracksContainer from '../../Components/Tracks/TracksContainer'
 import ArtistsContainer from '../../Components/Artists/ArtistsContainer'
-import ArtistModal from '../ArtistModal'
+import ArtistModal from './Modals/ArtistModal'
 import TrackModal from '../Tracks/TrackModal'
 
 export default function ShowcaseLayout() {
